@@ -4,6 +4,8 @@
 /node_modules
 /.pnp
 .pnp.js
+
+# User-specific stuff
 /.idea
 .idea
 /.firebase
