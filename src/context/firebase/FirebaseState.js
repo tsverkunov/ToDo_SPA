@@ -3,7 +3,11 @@ import {FirebaseContext} from "./firebaseContext";
 import {ADD_NOTE, FETCH_NOTES, firebaseReducer, REMOVE_NOTE, SHOW_LOADER} from "./firebaseReducer";
 import axios from "axios";
 
-const url = process.env.REACT_APP_DB_URL
+// const url = process.env.REACT_APP_DB_URL
+
+export const instance = axios.create({
+  baseURL: 'https://todo-react-06.firebaseio.com/',
+})
 
 export const FirebaseState = ({children}) => {
   const initialState = {
@@ -17,7 +21,7 @@ export const FirebaseState = ({children}) => {
 
   const fetchNotes = async () => {
     showLoader()
-    const res = await axios.get(`${url}/notes.json`)
+    const res = await instance.get(`notes.json`)
 
     const payload = Object.keys(res.data).map(key => {
       return {
@@ -30,10 +34,10 @@ export const FirebaseState = ({children}) => {
 
   const addNote = async title => {
     const note = {
-      title, data: new Date().toJSON()
+      title, data: new Date().toLocaleString()
     }
     try {
-      const res = await axios.post(`${url}/notes.json`, note)
+      const res = await instance.post(`notes.json`, note)
       const payload = {
         ...note,
         id: res.data.name
@@ -45,7 +49,7 @@ export const FirebaseState = ({children}) => {
   }
 
   const removeNote = async id => {
-    await axios.delete(`${url}/notes/${id}.json`)
+    await instance.delete(`notes/${id}.json`)
     dispatch({type: REMOVE_NOTE, payload: id})
   }
   return (

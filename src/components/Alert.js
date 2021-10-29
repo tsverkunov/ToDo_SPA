@@ -7,6 +7,9 @@ export const Alert = () => {
 // if (!alert.visible) {
 //   return null
 // }
+//     const onHide = () => {
+//       alert.hide('Заметка удалена')
+//     }
 
   return (
     <CSSTransition
@@ -20,8 +23,8 @@ export const Alert = () => {
       unmountOnExit
     >
       <div className={`alert alert-${alert.type || 'warning'} alert-dismissible`}>
-        <strong>Внимание!</strong>
-        {alert.text}
+        <strong>Внимание!</strong>{alert.text}
+
         <button onClick={hide} type="button" className="close" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

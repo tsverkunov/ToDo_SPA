@@ -6,11 +6,12 @@
 .pnp.js
 
 # User-specific stuff
-/.idea
-.idea
 /.firebase
 .firebase
 .firebaserc
+
+# IntellijIdea files
+.idea
 
 # testing
 /coverage

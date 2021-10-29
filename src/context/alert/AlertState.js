@@ -11,6 +11,7 @@ export const AlertState = ({children}) => {
       type: SHOW_ALERT,
       payload: {text, type}
     })
+    setTimeout(hide, 2500)
   }
   const hide = () => dispatch({type: HIDE_ALERT})
   return(
