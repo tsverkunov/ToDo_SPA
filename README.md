@@ -1,5 +1,5 @@
 
-# "Todo React SPA"
+# "ToDo"
 
 ### [*Ссылка на приложение &rarr;*](https://todo-react-06.web.app/ "ToDo") React - SPA "ToDo"
 
